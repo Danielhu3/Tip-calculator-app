@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+// Primary
+$strong-cyan: hsl(172, 67%, 45%);
+
+//Neutral
+$very-dark-cyan: hsl(183, 100%, 15%);
+$dark-gray-cyan: hsl(186, 14%, 43%);
+$dark-grayish-cyan: hsl(184, 14%, 56%);
+$light-gray-cyan: hsl(185, 41%, 84%);
+$light-grayish-cyan: hsl(189, 41%, 97%);
+$white: hsl(0, 0%, 100%);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 2.4rem;
+  background-color: $light-gray-cyan;
+  height: 100vh;
+
+  display: grid;
+
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+}
+
+.splitter-logo {
+  display: block;
+  margin: 6.4rem auto;
+}
+
+.container {
+  background-color: $white;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "container-calculator container-display";
+  gap: 3.2rem;
+
+  padding: 3.2rem;
+  width: 60vw;
+  margin: 0 auto;
+  border-radius: 1rem;
+  //add box-shadow
+}
+
+.container-calculator {
+  grid-area: container-calculator;
+
+  h2 {
+    font-size: 0.5em;
+    color: $dark-gray-cyan;
+  }
+
+  .calculator-input {
+    border: none;
+    width: 100%;
+    font-size: 2.4rem;
+    text-align: end;
+
+    margin: 1.6rem 0 3.2rem 0;
+    padding: 0.8rem;
+
+    background-color: $light-grayish-cyan;
+
+    color: $very-dark-cyan;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    &:focus {
+      outline: $strong-cyan 2px solid;
+    }
+
+    &::placeholder {
+      color: $dark-grayish-cyan;
+    }
+
+    &.bill {
+      background-image: url("../images/icon-dollar.svg");
+    }
+
+    &.people {
+      background-image: url("../images/icon-person.svg");
+    }
+
+    // applied to &.bill and &.people
+    background-repeat: no-repeat;
+    background-position: left;
+    background-position: 0.8rem;
+  }
+
+  .calculator-tips {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    margin: 1.6rem 0 3.2rem 0;
+
+    gap: 0.8rem;
+    grid-template-areas:
+      "area-1 area-2 area-3"
+      "area-4 area-5 area-6";
+
+    // loop to set areas
+    @for $i from 1 through 6 {
+      &.tips-label:nth-of-type(#{$i}),
+      &.tips.radio:nth-of-type(#{$i}) {
+        grid-area: area-#{$i};
+      }
+    }
+
+    .tips-radio {
+      display: none;
+    }
+
+    .tips-label {
+      cursor: pointer;
+      background-color: $very-dark-cyan;
+      color: $white;
+      font-weight: 700;
+      text-align: center;
+      font-size: 0.75em;
+      padding: 0.8rem 1.6rem;
+
+      border-radius: 0.5rem;
+
+      transition: background-color 0.3s;
+
+      &:last-of-type {
+        background-color: $light-grayish-cyan;
+        color: $dark-grayish-cyan;
+      }
+
+      &:hover {
+        background-color: rgba($strong-cyan, 0.3);
+      }
+    }
+
+    // this will get the label after the checked radio, i.e, the label that corresponds the radio input
+    .tips-radio:checked + .tips-label {
+      background-color: $strong-cyan;
+      color: $very-dark-cyan;
+    }
+  }
+}
+
+.container-display {
+  grid-area: container-display;
+
+  background-color: $very-dark-cyan;
+  border-radius: 1rem;
+  padding: 3.2rem;
+  display: flex;
+  flex-direction: column;
+
+  .display-tip,
+  .display-total {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "display-title display-value"
+      "display-text display-value";
+
+    .display-title {
+      grid-area: display-title;
+      font-size: 0.5em;
+      align-self: center;
+      color: $white;
+      font-weight: 400;
+    }
+    .display-text {
+      grid-area: display-text;
+      font-size: 0.5em;
+
+      color: $dark-grayish-cyan;
+    }
+    .display-value {
+      grid-area: display-value;
+      font-size: 2em;
+      color: $strong-cyan;
+      font-weight: 700;
+    }
+  }
+
+  .display-button {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: none;
+
+    margin: auto 0 0 0;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    &:disabled {
+      color: $very-dark-cyan;
+
+      background-color: rgba($strong-cyan, 0.3);
+      cursor: auto;
+    }
+  }
+}

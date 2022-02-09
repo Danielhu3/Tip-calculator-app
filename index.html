@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Tip calculator app</title>
+  </head>
+  <body>
+    <main>
+      <img src="images/logo.svg" alt="Splitter logo" class="splitter-logo" />
+
+      <div class="container">
+        <!-- Calculator side-->
+        <div class="container-calculator">
+          <h2>Bill</h2>
+          <input type="text" class="calculator-input bill" placeholder="0" />
+
+          <h2>Select Tip %</h2>
+          <div class="calculator-tips">
+            <input
+              type="radio"
+              name="radio-input"
+              id="radio-input1"
+              value="5"
+              class="tips-radio fixed"
+            />
+            <label for="radio-input1" class="tips-label fixed">5%</label>
+
+            <input
+              type="radio"
+              name="radio-input"
+              id="radio-input2"
+              value="10"
+              class="tips-radio fixed"
+            />
+            <label for="radio-input2" class="tips-label fixed">10%</label>
+
+            <input
+              type="radio"
+              name="radio-input"
+              id="radio-input3"
+              value="15"
+              class="tips-radio fixed"
+            />
+            <label for="radio-input3" class="tips-label fixed">15%</label>
+
+            <input
+              type="radio"
+              name="radio-input"
+              id="radio-input4"
+              value="25"
+              class="tips-radio fixed"
+            />
+            <label for="radio-input4" class="tips-label fixed">25%</label>
+
+            <input
+              type="radio"
+              name="radio-input"
+              id="radio-input5"
+              value="50"
+              class="tips-radio fixed"
+            />
+            <label for="radio-input5" class="tips-label fixed">50%</label>
+
+            <input
+              type="radio"
+              name="radio-input"
+              id="radio-input6"
+              value="custom"
+              class="tips-radio custom"
+            />
+            <label for="radio-input6" class="tips-label fixed">Custom</label>
+          </div>
+
+          <h2>Number of People</h2>
+          <input type="text" class="calculator-input people" placeholder="0" />
+        </div>
+
+        <!-- Display side-->
+        <div class="container-display">
+          <div class="display-tip">
+            <h2 class="display-title">Tip Amount</h2>
+            <p class="display-text">/ person</p>
+            <p class="display-value">$0.00</p>
+          </div>
+
+          <div class="display-total">
+            <h2 class="display-title">Total</h2>
+            <p class="display-text">/ person</p>
+            <p class="display-value">$0.00</p>
+          </div>
+
+          <button disabled="disabled" class="display-button">RESET</button>
+        </div>
+      </div>
+    </main>
+    <script src="js/main.js"></script>
+  </body>
+</html>
