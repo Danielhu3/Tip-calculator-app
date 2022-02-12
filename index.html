@@ -22,7 +22,11 @@
       <div class="container">
         <!-- Calculator side-->
         <div class="container-calculator">
-          <h2>Bill</h2>
+          <div class="calculator-title">
+            <h2>Bill</h2>
+            <h2 class="error-message hidden">Can't be zero</h2>
+          </div>
+
           <input type="text" class="calculator-input bill" placeholder="0" />
 
           <h2>Select Tip %</h2>
@@ -82,7 +86,10 @@
             <label for="radio-input6" class="tips-label fixed">Custom</label>
           </div>
 
-          <h2>Number of People</h2>
+          <div class="calculator-title">
+            <h2>Number of People</h2>
+            <h2 class="error-message hidden">Can't be zero</h2>
+          </div>
           <input type="text" class="calculator-input people" placeholder="0" />
         </div>
 

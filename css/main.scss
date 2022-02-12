@@ -55,9 +55,31 @@ body {
 .container-calculator {
   grid-area: container-calculator;
 
+  // to all h2
   h2 {
     font-size: 0.5em;
     color: $dark-gray-cyan;
+  }
+
+  // styling bill and number of people
+  .calculator-title {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "title title-error";
+
+    h2 {
+      grid-area: title;
+    }
+
+    .error-message {
+      grid-area: title-error;
+      margin: 0 0 0 auto;
+      color: orangered;
+
+      &.hidden {
+        display: none;
+      }
+    }
   }
 
   .calculator-input {
