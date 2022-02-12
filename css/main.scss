@@ -98,6 +98,10 @@ body {
 
     cursor: pointer;
 
+    &.error {
+      outline: orangered 2px solid;
+    }
+
     &:focus {
       outline: $strong-cyan 2px solid;
     }

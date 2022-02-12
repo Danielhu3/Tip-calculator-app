@@ -1,8 +1,9 @@
-// on custom radio buttom, add a input text above the label and put get input value
-
-// add an error outline to inputs
+// to-do
+// on custom radio buttom, add a input text above the label and get input value
+// enable reset button
 
 let radioElements = document.querySelectorAll('.tips-radio')
+let calculatorInputElement = document.querySelectorAll('.calculator-input')
 let billElement = document.querySelector('.calculator-input.bill')
 let peopleElement = document.querySelector('.calculator-input.people')
 
@@ -30,34 +31,38 @@ function calculate(percentage) {
   totalElement.innerHTML = `$${totalValue.toFixed(2)}`
 }
 
-// enable button
+// add enable button
 function checkInputs() {
   let count = 0
   if (billElement.value.length == 0) {
     errorMessageElement[0].classList.remove('hidden')
+    calculatorInputElement[0].classList.add('error')
     count++
   } else {
     errorMessageElement[0].classList.add('hidden')
+    calculatorInputElement[0].classList.remove('error')
   }
 
   if (peopleElement.value.length == 0) {
     errorMessageElement[1].classList.remove('hidden')
+    calculatorInputElement[1].classList.add('error')
     count++
   } else {
     errorMessageElement[1].classList.add('hidden')
+    calculatorInputElement[1].classList.remove('error')
   }
 
   // bill and people aren't empty, so, call calculator
   if (count == 0) {
-    getValue(event)
+    let percentage = getValue(event)
+    calculate(percentage)
   }
 }
 
 function getValue(event) {
   // % selected
   let percentage = event.path[0].value
-
-  calculate(percentage)
+  return percentage
 }
 function registerEvents() {
   radioElements.forEach(function (radio) {

@@ -92,6 +92,10 @@ body {
   background-position: 0.8rem;
 }
 
+.container-calculator .calculator-input.error {
+  outline: orangered 2px solid;
+}
+
 .container-calculator .calculator-input:focus {
   outline: #26c0ab 2px solid;
 }
