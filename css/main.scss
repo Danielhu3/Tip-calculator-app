@@ -47,6 +47,7 @@ body {
 
   padding: 3.2rem;
   width: 60vw;
+
   margin: 0 auto;
   border-radius: 1rem;
   //add box-shadow
@@ -148,6 +149,12 @@ body {
       display: none;
     }
 
+    // this will get the label after the checked radio, i.e, the label that corresponds the radio input
+    .tips-radio:checked + .tips-label {
+      background-color: $strong-cyan;
+      color: $very-dark-cyan;
+    }
+
     .tips-label {
       cursor: pointer;
       background-color: $very-dark-cyan;
@@ -161,20 +168,19 @@ body {
 
       transition: background-color 0.3s;
 
-      &:last-of-type {
+      &.custom {
         background-color: $light-grayish-cyan;
         color: $dark-grayish-cyan;
+
+        &:focus {
+          background-color: $white;
+          outline: $strong-cyan 2px solid;
+        }
       }
 
       &:hover {
         background-color: rgba($strong-cyan, 0.3);
       }
-    }
-
-    // this will get the label after the checked radio, i.e, the label that corresponds the radio input
-    .tips-radio:checked + .tips-label {
-      background-color: $strong-cyan;
-      color: $very-dark-cyan;
     }
   }
 }
@@ -229,9 +235,14 @@ body {
 
     cursor: pointer;
 
-    &:disabled {
-      color: $very-dark-cyan;
+    color: $very-dark-cyan;
+    background-color: $strong-cyan;
 
+    &:hover {
+      background-color: $light-gray-cyan;
+    }
+
+    &:disabled {
       background-color: rgba($strong-cyan, 0.3);
       cursor: auto;
     }

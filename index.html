@@ -76,6 +76,7 @@
             />
             <label for="radio-input5" class="tips-label fixed">50%</label>
 
+            <!--Custom-->
             <input
               type="radio"
               name="radio-input"
@@ -83,7 +84,13 @@
               value="custom"
               class="tips-radio custom"
             />
-            <label for="radio-input6" class="tips-label fixed">Custom</label>
+            <label
+              for="radio-input6"
+              class="tips-label custom"
+              id="editable-label"
+              contenteditable="true"
+              >Custom</label
+            >
           </div>
 
           <div class="calculator-title">
@@ -107,7 +114,9 @@
             <p class="display-value">$0.00</p>
           </div>
 
-          <button disabled="disabled" class="display-button">RESET</button>
+          <button disabled="disabled" class="display-button" onclick="reset()">
+            RESET
+          </button>
         </div>
       </div>
     </main>

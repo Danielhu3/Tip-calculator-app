@@ -1,7 +1,3 @@
-// to-do
-// on custom radio buttom, add a input text above the label and get input value
-// enable reset button
-
 let radioElements = document.querySelectorAll('.tips-radio')
 let calculatorInputElement = document.querySelectorAll('.calculator-input')
 let billElement = document.querySelector('.calculator-input.bill')
@@ -31,31 +27,81 @@ function calculate(percentage) {
   totalElement.innerHTML = `$${totalValue.toFixed(2)}`
 }
 
-// add enable button
+function reset() {
+  let radioChecked = document.querySelector('.tips-radio:checked')
+  radioChecked.checked = false
+
+  billElement.value = ''
+  peopleElement.value = ''
+  tipAmountElement.innerHTML = '$0.00'
+  totalElement.innerHTML = '$0.00'
+
+  changeResetButtonState(2)
+}
+
+function changeResetButtonState(changeState) {
+  let displayButtonElement = document.querySelector('.display-button')
+
+  if (changeState == 1) {
+    displayButtonElement.disabled = false
+  }
+
+  if (changeState == 2) {
+    displayButtonElement.disabled = true
+  }
+}
+
 function checkInputs() {
-  let count = 0
-  if (billElement.value.length == 0) {
-    errorMessageElement[0].classList.remove('hidden')
-    calculatorInputElement[0].classList.add('error')
-    count++
-  } else {
-    errorMessageElement[0].classList.add('hidden')
-    calculatorInputElement[0].classList.remove('error')
+  let percentage
+  if (event.path[0].value == 'custom') {
+    let customValue = document.querySelector('#editable-label').textContent
+
+    // clear input
+    if (customValue == 'Custom') {
+      document.querySelector('#editable-label').textContent = ''
+    }
+
+    customValue = parseFloat(
+      document.querySelector('#editable-label').textContent
+    )
+
+    // check if isn't a NaN value
+    if (customValue) {
+      percentage = customValue
+    }
+  }
+  //
+  else {
+    percentage = getValue(event)
   }
 
-  if (peopleElement.value.length == 0) {
-    errorMessageElement[1].classList.remove('hidden')
-    calculatorInputElement[1].classList.add('error')
-    count++
-  } else {
-    errorMessageElement[1].classList.add('hidden')
-    calculatorInputElement[1].classList.remove('error')
-  }
+  // check if percentage is filled, to avoid execute the block above without custom value
+  if (percentage) {
+    let count = 0
+    if (billElement.value.length == 0) {
+      errorMessageElement[0].classList.remove('hidden')
+      calculatorInputElement[0].classList.add('error')
+      count++
+    } else {
+      errorMessageElement[0].classList.add('hidden')
+      calculatorInputElement[0].classList.remove('error')
+    }
 
-  // bill and people aren't empty, so, call calculator
-  if (count == 0) {
-    let percentage = getValue(event)
-    calculate(percentage)
+    if (peopleElement.value.length == 0) {
+      errorMessageElement[1].classList.remove('hidden')
+      calculatorInputElement[1].classList.add('error')
+      count++
+    } else {
+      errorMessageElement[1].classList.add('hidden')
+      calculatorInputElement[1].classList.remove('error')
+    }
+
+    // bill and people aren't empty, so, call calculator
+    if (count == 0) {
+      //let percentage = getValue(event)
+      calculate(percentage)
+      changeResetButtonState(1)
+    }
   }
 }
 
@@ -66,7 +112,7 @@ function getValue(event) {
 }
 function registerEvents() {
   radioElements.forEach(function (radio) {
-    radio.addEventListener('click', getValue)
+    //radio.addEventListener('click', getValue)
     radio.addEventListener('click', checkInputs)
   })
 }
