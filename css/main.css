@@ -37,6 +37,7 @@ body {
       grid-template-areas: "container-calculator container-display";
   gap: 3.2rem;
   padding: 3.2rem;
+  width: 80vw;
   margin: 0 3.2rem;
   border-radius: 1rem;
   -webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.1);
