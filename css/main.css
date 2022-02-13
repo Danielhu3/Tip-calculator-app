@@ -16,6 +16,9 @@ body {
   height: 100vh;
   display: -ms-grid;
   display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-family: "Space Mono", monospace;
   font-weight: 400;
 }
@@ -34,9 +37,10 @@ body {
       grid-template-areas: "container-calculator container-display";
   gap: 3.2rem;
   padding: 3.2rem;
-  width: 60vw;
-  margin: 0 auto;
+  margin: 0 3.2rem;
   border-radius: 1rem;
+  -webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.1);
+          box-shadow: 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 .container-calculator {
@@ -285,5 +289,17 @@ body {
 .container-display .display-button:disabled {
   background-color: rgba(38, 192, 171, 0.3);
   cursor: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "container-calculator" "container-display";
+    width: 100vw;
+    margin: 0;
+  }
 }
 /*# sourceMappingURL=main.css.map */

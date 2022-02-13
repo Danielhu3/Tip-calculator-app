@@ -28,6 +28,8 @@ body {
 
   display: grid;
 
+  justify-content: center;
+
   font-family: "Space Mono", monospace;
   font-weight: 400;
 }
@@ -46,11 +48,10 @@ body {
   gap: 3.2rem;
 
   padding: 3.2rem;
-  width: 60vw;
 
-  margin: 0 auto;
+  margin: 0 3.2rem;
   border-radius: 1rem;
-  //add box-shadow
+  box-shadow: 0 1px 1px rgba($white, 0.1);
 }
 
 .container-calculator {
@@ -246,5 +247,20 @@ body {
       background-color: rgba($strong-cyan, 0.3);
       cursor: auto;
     }
+  }
+}
+
+// responsive
+
+@media only screen and (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "container-calculator"
+      "container-display";
+
+    width: 100vw;
+    margin: 0;
   }
 }
