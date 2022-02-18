@@ -4,6 +4,7 @@ let billElement = document.querySelector('.calculator-input.bill')
 let peopleElement = document.querySelector('.calculator-input.people')
 
 let errorMessageElement = document.querySelectorAll('.error-message')
+console.log(errorMessageElement)
 
 let tipAmountElement = document.querySelector('.display-tip').children[2]
 let totalElement = document.querySelector('.display-total').children[2]
@@ -68,6 +69,10 @@ function checkInputs() {
     // check if isn't a NaN value
     if (customValue) {
       percentage = customValue
+      errorMessageElement[1].classList.add('hidden')
+    } else {
+      console.log(customValue)
+      errorMessageElement[1].classList.remove('hidden')
     }
   }
   //
@@ -88,11 +93,11 @@ function checkInputs() {
     }
 
     if (peopleElement.value.length == 0) {
-      errorMessageElement[1].classList.remove('hidden')
+      errorMessageElement[2].classList.remove('hidden')
       calculatorInputElement[1].classList.add('error')
       count++
     } else {
-      errorMessageElement[1].classList.add('hidden')
+      errorMessageElement[2].classList.add('hidden')
       calculatorInputElement[1].classList.remove('error')
     }
 
