@@ -9,6 +9,9 @@ console.log(errorMessageElement)
 let tipAmountElement = document.querySelector('.display-tip').children[2]
 let totalElement = document.querySelector('.display-total').children[2]
 
+// to not alert error on first click in custom button
+let clickCount = 0
+
 function calculate(percentage) {
   let billValue = parseFloat(billElement.value)
 
@@ -53,6 +56,7 @@ function changeResetButtonState(changeState) {
 }
 
 function checkInputs() {
+  clickCount++
   let percentage
   if (event.path[0].value == 'custom') {
     let customValue = document.querySelector('#editable-label').textContent
@@ -70,8 +74,9 @@ function checkInputs() {
     if (customValue) {
       percentage = customValue
       errorMessageElement[1].classList.add('hidden')
-    } else {
-      console.log(customValue)
+    }
+    // first click on button not will alert an error
+    else if (clickCount > 1) {
       errorMessageElement[1].classList.remove('hidden')
     }
   }
